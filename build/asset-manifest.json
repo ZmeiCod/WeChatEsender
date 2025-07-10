@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fe581c2a.css",
+    "main.js": "/static/js/main.fb47e702.js",
+    "static/media/CygreSemiBold.ttf": "/static/media/CygreSemiBold.a32efe1437da164e10f7.ttf",
+    "static/media/NotFound.svg": "/static/media/NotFound.9147283cb511815e19caeb2700f418ec.svg",
+    "static/media/KanitCyrillic.ttf": "/static/media/KanitCyrillic.859fc6c3045fa65800e1.ttf",
+    "index.html": "/index.html",
+    "static/media/honeycombs.svg": "/static/media/honeycombs.819ca0860f6cf03ad3d1a905dbeb3bde.svg",
+    "main.fe581c2a.css.map": "/static/css/main.fe581c2a.css.map",
+    "main.fb47e702.js.map": "/static/js/main.fb47e702.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fe581c2a.css",
+    "static/js/main.fb47e702.js"
+  ]
+}

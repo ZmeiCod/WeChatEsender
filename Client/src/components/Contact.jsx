@@ -4,9 +4,18 @@ export default function Contact() {
   const REACT_APP_API_URL = 'http://localhost:3000';
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(""); // Для сообщений об ошибках
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Предотвращаем перезагрузку страницы
+    e.preventDefault();
+    setIsLoading(true);
+    setIsSuccess(false);
+    setErrorMessage(""); // Сбрасываем сообщение об ошибках
+
+    // Устанавливаем таймаут на 3 секунды перед отправкой запроса
+    await new Promise((resolve) => setTimeout(resolve, 3000));
 
     try {
       const response = await fetch(`${REACT_APP_API_URL}/api/email`, {
@@ -23,10 +32,12 @@ export default function Contact() {
 
       const data = await response.json();
       console.log("Данные успешно отправлены:", data);
-      // Здесь можно добавить уведомление пользователю о успешной отправке
+      setIsSuccess(true);
     } catch (error) {
       console.error("Ошибка:", error);
-      // Обработка ошибок
+      setErrorMessage("Ошибка при отправке данных: " + error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -54,9 +65,17 @@ export default function Contact() {
           />
         </div>
         <div>
-          <button type="submit">Отправить</button>
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? (
+              <div className="spinner"></div>
+            ) : (
+              "Отправить"
+            )}
+          </button>
         </div>
       </form>
+      {isSuccess && <div className="success-message">Запрос успешно отправлен!</div>}
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
       <div className="privacy-notice">
         Нажимая на кнопку "Отправить", вы даете согласие на обработку
         персональных данных и соглашаетесь на политику конфиденциальности.

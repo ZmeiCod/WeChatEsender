@@ -94,7 +94,37 @@ $border-radius: 8px;
   }
 
   button {
-    width: 100%;
-    font-size: 1.1rem;
+    position: relative; // Обеспечиваем относительное позиционирование для спиннера
+    width: 100%; // Кнопка занимает полную ширину
+    font-size: 1.1rem; // Размер шрифта кнопки
   }
 }
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #fff;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  display: inline-block; // Обеспечиваем, чтобы спиннер отображался на одной строке с текстом
+  vertical-align: middle; // Чтобы спиннер был выровнен по центру
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.success-message {
+  margin-top: 15px;
+  color: green;
+}
+
+.error-message {
+  margin-top: 15px;
+  color: red; // Цвет сообщения об ошибке
+}
+
+
+

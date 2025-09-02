@@ -1,12 +1,12 @@
 # dependencies
-/node_modules
 Server/node_modules/
 Client/node_modules/
+/node_modules
 
 # production
-/build
 Server/build/
 Client/build/
+/build
 
 # misc
 .env

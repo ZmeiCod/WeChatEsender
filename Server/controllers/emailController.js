@@ -12,11 +12,11 @@ if (!fs.existsSync(logDir)) {
 class emailController {
   async create(req, res) {
     try {
-      const { name, phone } = req.body;
+      const { name, phone, message } = req.body;
       const timestamp = new Date().toISOString();
       
       // Записываем в лог файл
-      const logEntry = `${timestamp} - Имя: ${name}, Телефон: ${phone}\n`;
+      const logEntry = `${timestamp} - Имя: ${name}, Телефон: ${phone}, Сообщение: ${message}\n`;
       fs.appendFile(path.join(logDir, "request.log"), logEntry, (err) => {
         if (err) {
           console.error(err);

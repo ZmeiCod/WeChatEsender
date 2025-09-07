@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 
 export default function Contact() {
-  const REACT_APP_API_URL = 'http://localhost:3000';
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(""); // Для сообщений об ошибках
+ // Для сообщений об ошибках
 
   const handleSubmit = async (e) => {
     e.preventDefault();

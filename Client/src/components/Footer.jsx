@@ -11,7 +11,7 @@ export default function Footer() {
                 </a>
             ))}
         </div>
-        <p className='mt-8 text-center tracking-tight text-neutral-500'> &copy;Restaura. All rights reservd.</p>
+        <p className='mt-8 text-center tracking-tight text-neutral-500'> &copy; WeChatEsender 2025. Все права защищены</p>
     </div>
   )
 }

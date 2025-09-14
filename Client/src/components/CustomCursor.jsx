@@ -1,74 +1,78 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { gsap } from "gsap";
 
-const CustomCursor = () => {
-  const [cursorStyle, setCursorStyle] = useState({
-    left: "0px",
-    top: "0px",
-    transform: "scale(1)",
-    backgroundColor: "rgba(255, 255, 255, 0.0)",
-  });
+export default function CustomCursor() {
+  const cursorRef = React.useRef(null);
+  const cursorBorderRef = React.useRef(null);
+
+  const isMobile =
+    typeof window !== "undefined" &&
+    window.matchMedia("(max-width: 768px)").matches;
+
+  if (isMobile) {
+    return null;
+  }
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      setCursorStyle((prevStyle) => ({
-        ...prevStyle,
-        left: `${e.pageX}px`,
-        top: `${e.pageY}px`,
-      }));
-    };
+    const cursor = cursorRef.current;
+    const cursorBorder = cursorBorderRef.current;
 
-    const handleMouseEnter = () => {
-      setCursorStyle((prevStyle) => ({
-        ...prevStyle,
-        transform: "scale(2)",
-        borderColor: "black",
-
-      }));
-    };
-
-    const handleMouseLeave = () => {
-      setCursorStyle((prevStyle) => ({
-        ...prevStyle,
-        transform: "scale(1)",
-        backgroundColor: "rgba(255, 255, 255, 0.0)",
-        borderColor: "white",
-      }));
-    };
-
-    document.addEventListener("mousemove", handleMouseMove);
-
-    const buttons = document.querySelectorAll("button");
-    buttons.forEach((button) => {
-      button.addEventListener("mouseenter", handleMouseEnter);
-      button.addEventListener("mouseleave", handleMouseLeave);
+    gsap.set([cursor, cursorBorder], {
+      xPercent: -50,
+      yPercent: -50,
     });
 
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      buttons.forEach((button) => {
-        button.removeEventListener("mouseenter", handleMouseEnter);
-        button.removeEventListener("mouseleave", handleMouseLeave);
-      });
+    const xTo = gsap.quickTo(cursor, "x", {
+      duration: 0.2,
+      ease: "power3.out",
+    });
+
+    const yTo = gsap.quickTo(cursor, "y", {
+      duration: 0.2,
+      ease: "power3.out",
+    });
+    const xToBorder = gsap.quickTo(cursorBorder, "x", {
+      duration: 0.5,
+      ease: "power.out",
+    });
+    const yToBorder = gsap.quickTo(cursorBorder, "y", {
+      duration: 0.5,
+      ease: "power3.out",
+    });
+
+    const handleMouseMove = (e) => {
+      xTo(e.clientX);
+      yTo(e.clientY);
+      xToBorder(e.clientX);
+      yToBorder(e.clientY);
     };
+    window.addEventListener("mousemove", handleMouseMove);
+
+    // Add click animation
+    document.addEventListener("mousedown", () => {
+      gsap.to([cursor, cursorBorder], {
+        scale: 0.6,
+        duration: 0.2,
+      });
+    });
+    document.addEventListener("mouseup", () => {
+      gsap.to([cursor, cursorBorder], {
+        scale: 1,
+        duration: 0.2,
+      });
+    });
   }, []);
 
   return (
-    <div
-      className="cursor-circle"
-      style={{
-        position: "absolute",
-        left: cursorStyle.left,
-        top: cursorStyle.top,
-        transform: cursorStyle.transform,
-        backgroundColor: cursorStyle.backgroundColor,
-        borderRadius: "50%",
-        width: "20px", // Задайте ширину курсора
-        height: "20px", // Задайте высоту курсора
-        pointerEvents: "none",
-        border: `2px solid ${cursorStyle.borderColor}`
-      }}
-    />
+    <>
+      <dev
+        ref={cursorRef}
+        className="fixed top-0 left-0 w-[20px] h-[20px] bg-stone-600 rounded-full pointer-events-none z-[999]"
+      ></dev>
+      <div
+        ref={cursorBorderRef}
+        className="fixed top-0 left-0 w-[40px] h-[40px] border border-stone-600 rounded-full pointer-events-none z-[999] opacity-50"
+      ></div>
+    </>
   );
-};
-
-export default CustomCursor;
+}

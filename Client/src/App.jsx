@@ -4,18 +4,25 @@ import Footer from "./components/Footer";
 import Preview from "./components/Preview";
 import Partners from "./components/Partners";
 import Highlight from "./components/Highligthts";
-// import CustomCursor from './components/CustomCursor';
+import Advantages from "./components/Expertise";
+import ProcessBlock from "./components/Process";
+import CustomCursor from './components/CustomCursor';
+import Services from "./components/Services";
 
 function App() {
   return (
-    <main className="overflow-hidden text-neutral-200 antialiased custom-cursor">
-      {/* <CustomCursor /> */}
+    <main className="overflow-hidden text-neutral-200">
+      
       <Preview />
       <Navbar />
-      <Highlight/>
+      <ProcessBlock/>
+      <Services/>
+      {/* <Highlight/> */}
+      <Advantages/>
       <Partners/>
       <Form/>
       <Footer />
+      <CustomCursor />
     </main>
   );
 }

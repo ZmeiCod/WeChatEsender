@@ -3,8 +3,8 @@ const path = require("path");
 require('dotenv').config()
 const TelegramBot = require('node-telegram-bot-api');
 
-const BotToken = "7967115560:AAEh9NWpWQfILssbakinTA54nEeB45-KJ9c";
-const BotGroupId = "-4965067921";
+const BotToken = process.env.BOT_TOKEN;
+const BotGroupId = process.env.BOT_GROUP_ID;
 const bot = new TelegramBot(BotToken);
 
 // Получаем путь к папке для логов

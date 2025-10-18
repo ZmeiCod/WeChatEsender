@@ -8,9 +8,7 @@ Server/build/
 Client/build/
 /build
 
-# misc
-.env
-
 request.log*
 error.log*
 app.log*
+.env

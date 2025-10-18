@@ -6,7 +6,7 @@ import Setting from "../../public/assets/icons/Setting.svg";
 
 export default function Services() {
   return (
-    <section className="py-4 md:py-8 px-4 md:px-8">
+    <section className="py-4 md:py-8 px-4 md:px-8" id="Services">
       <h2 className="my-8 text-center text-3xl tracking-tight lg:text-4xl">
         Наши решения
       </h2>

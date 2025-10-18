@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Form() {
-  const REACT_APP_API_URL = "http://localhost:3000";
+  const REACT_APP_API_URL = "http://localhost:3000"; /// 
   const [name, setName] = React.useState("");
   const [phone, setPhone] = React.useState("");
   const [message, setMessage] = React.useState("")
@@ -14,9 +14,6 @@ export default function Form() {
     setIsLoading(true);
     setIsSuccess(false);
     setErrorMessage(""); // Сбрасываем сообщение об ошибках
-
-    // Устанавливаем таймаут на 3 секунды перед отправкой запроса
-    await new Promise((resolve) => setTimeout(resolve, 3000));
 
     try {
       const response = await fetch(`${REACT_APP_API_URL}/api/email`, {

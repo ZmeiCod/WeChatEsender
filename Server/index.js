@@ -13,6 +13,10 @@ const allowedOrigins = [
   "https://localhost:3000",
   "http://localhost:5173",
   "https://localhost:5173",
+  "http://5.35.10.236",
+  "http://wechatesender.ru",
+  "http://5.35.10.236:3000",
+  "http://wechatesender.ru:3000",
 ];
 
 let corsOptions = {

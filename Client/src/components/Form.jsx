@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Form() {
-  const REACT_APP_API_URL = "http://localhost:3000"; /// 
+  const VITE_API_URL = import.meta.env.VITE_API_URL;
   const [name, setName] = React.useState("");
   const [phone, setPhone] = React.useState("");
   const [message, setMessage] = React.useState("")
@@ -16,7 +16,7 @@ export default function Form() {
     setErrorMessage(""); // Сбрасываем сообщение об ошибках
 
     try {
-      const response = await fetch(`${REACT_APP_API_URL}/api/email`, {
+      const response = await fetch(`${VITE_API_URL}/api/email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -32,7 +32,7 @@ class EmailController {
       };
 
       const telegramTime = formatDate(new Date());
-      const telegramMessage = `${telegramTime}\nИмя: ${name}\nТелефон: ${phone}\nСообщение: ${message}\n\nЗаявка с сайта wechatesender.ru`;
+      const telegramMessage = `${telegramTime}\nИмя: ${name}\nТелефон: ${phone}\nСообщение: ${message}\n`;
 
       // Отправляем сообщение в Telegram
       await bot.sendMessage(BotGroupId, telegramMessage);

@@ -17,10 +17,14 @@ const allowedOrigins = [
   "http://5.35.10.236:3000",
   "http://wechat-esender.ru",
   "http://wechat-esender.ru:3000",
+  "http://wechat-esender.ru/",
+  "http://wechat-esender.ru:3000/",
   "https://5.35.10.236",
   "https://5.35.10.236:3000",
   "https://wechat-esender.ru",
   "https://wechat-esender.ru:3000",
+  "https://wechat-esender.ru/",
+  "https://wechat-esender.ru:3000/",
 ];
 
 let corsOptions = {
@@ -40,7 +44,6 @@ let corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use("/api", router);
-
 
 // Запускаем сервер
 const start = async () => {

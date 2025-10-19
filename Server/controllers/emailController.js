@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
-require('dotenv').config();
-const TelegramBot = require('node-telegram-bot-api');
+require("dotenv").config();
+const TelegramBot = require("node-telegram-bot-api");
 
 const BotToken = process.env.BOT_TOKEN;
 const BotGroupId = process.env.BOT_GROUP_ID;
@@ -20,14 +20,16 @@ class EmailController {
     try {
       const { name, phone, message } = req.body;
       if (!name || !phone || !message) {
-        return res.status(400).json({ error: "Не заполнено обязательное поле" });
+        return res
+          .status(400)
+          .json({ error: "Не заполнено обязательное поле" });
       }
 
       const formatDate = (date) => {
-        const day = String(date.getDate()).padStart(2, '0');
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // Месяцы начинаются с 0
+        const day = String(date.getDate()).padStart(2, "0");
+        const month = String(date.getMonth() + 1).padStart(2, "0"); // Месяцы начинаются с 0
         const year = date.getFullYear();
-        
+
         return `${day}.${month}.${year}`;
       };
 
@@ -37,13 +39,15 @@ class EmailController {
       try {
         // Отправляем сообщение в Telegram
         await bot.sendMessage(BotGroupId, telegramMessage);
-        console.log('Сообщение отправлено');
+        console.log("Сообщение отправлено");
       } catch (sendError) {
         // Записываем ошибку в лог файл
         const errorTimestamp = new Date().toISOString();
         const errorLogMessage = `${errorTimestamp} - Ошибка при отправке сообщения в Telegram: ${sendError.message}\n`;
         fs.appendFileSync(path.join(logDir, "error.log"), errorLogMessage);
-        return res.status(500).json({ message: "Ошибка при отправке сообщения" });
+        return res
+          .status(500)
+          .json({ message: "Ошибка при отправке сообщения" });
       }
 
       // Логируем информацию
@@ -55,6 +59,16 @@ class EmailController {
     } catch (e) {
       console.error(e);
       return res.status(500).json({ message: "Ошибка сервера" });
+    }
+  }
+
+  async get(req, res) {
+    try {
+      res.status(200).json({ message: "Сервер работает нормально" });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ message: "Ошибка на сервере", error: error.message });
     }
   }
 }

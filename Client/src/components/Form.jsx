@@ -13,7 +13,7 @@ export default function Form() {
     e.preventDefault();
     setIsLoading(true);
     setIsSuccess(false);
-    setErrorMessage(""); // Сбрасываем сообщение об ошибках
+    setErrorMessage("");
 
     try {
       const response = await fetch(`${VITE_API_URL}/api/email`, {

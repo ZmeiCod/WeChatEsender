@@ -1,12 +1,12 @@
 require("dotenv").config();
 const express = require("express");
-const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
+const cookieParser = require('cookie-parser')
 const cors = require("cors");
 const router = require("./routes/index");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 const allowedOrigins = [
   "http://localhost:3000",
@@ -41,6 +41,8 @@ let corsOptions = {
 };
 
 // Middleware
+app.enable('trust proxy')
+app.use(cookieParser())
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use("/api", router);

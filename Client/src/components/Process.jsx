@@ -8,7 +8,7 @@ const processItems = [
 
 const ProcessBlock = () => {
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div id="process" className="max-w-4xl mx-auto p-6">
 
       <h2 className="text-center text-xl md:text-2xl font-semibold mb-8 px-4">
         Вам не придётся разбираться в приложении или проходить регистрацию

@@ -112,10 +112,11 @@ export default function Form() {
                   htmlFor="message"
                   className="absolute left-4 -top-6 bg-transparent text-sm leading-7 text-neutral-500 transition-all peer-placeholder-shown:left-4 peer-placeholder-shown:top-2  peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-focus:left-4 peer-focus:-top-6 peer-focus:text-sm peer-focus:text-stone-400"
                 >
-                  Ваше сообщение
+                  Какая услуга Вас заинтересовала?
                 </label>
               </div>
             </div>
+
             <div className="w-full p-2 flex justify-center">
               <button
                 type="submit"

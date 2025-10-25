@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Preview() {
   const scrollToContact = () => {
-    const contactSection = document.getElementById("contact");
+    const contactSection = document.getElementById("process");
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: "smooth" });
     }

@@ -48,7 +48,7 @@ export const LINKS = [
 
 export const SOCIAL_MEDIA_LINKS = [
   {
-    href: "https://t.me/WeChatEsender",
+    href: "https://t.me/+u2DTe5wOiQo2YjI6",
     icon: <FaTelegramPlane fontSize={40} className="hover:opacity-80" />,
   },
 ];
